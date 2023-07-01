@@ -13,11 +13,11 @@ function Home() {
     Axios.get("https://the-sneaker-database.p.rapidapi.com/sneakers", {
       headers: {
         "X-RapidAPI-Host": "the-sneaker-database.p.rapidapi.com",
-        //"X-RapidAPI-Key": process.env.REACT_APP_API_KEY
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY
       },
       params: {
         name: searchTerm,
-        limit: 10,
+        limit: 20,
       },
     })
       .then((response) => {
@@ -37,7 +37,6 @@ function Home() {
   return (
     <div className="App">
       <div className="headerContainer">
-        <h1>Sole Search</h1>
         <div className="buttonContainer">
           <input
             placeholder="Search for a Shoe"
@@ -54,7 +53,7 @@ function Home() {
           <Shoe
             key={shoe.id}
             icon={shoe.image.small}
-            shoeName={shoe.name}
+            shoe={shoe.name}
             id={shoe.id}
           />
         ))}

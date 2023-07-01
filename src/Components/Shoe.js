@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 const Shoe = ({
   icon,
-  shoeName,
+  shoe,
   id,
 }) => {
   let navigate = useNavigate();
   return (
     <div>
         <img src={icon} alt="Shoe Icon" />
-        <h1 className="coinName">{shoeName.name}</h1>
+        <h2>{shoe}</h2>
         <button onClick={() => {navigate(`/ShoePage/${id}`); }}> More Info </button>
     </div>
   );

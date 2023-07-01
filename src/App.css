@@ -2,37 +2,141 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1{
+
+  font-size: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2{
+  
+  font-size: 20px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+p{
+
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+link {
+  text-align: center;
+}
+
+
+
+body {
+  background-image: url("./black.png");
+  background-size: cover;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: "Cooper Black", sans-serif;
+}
+
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.shoe {
+  text-align: center;
+  font-size: 4em; /* adjust the font size to your desired value */
+  flex: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button {
+  background-color: #111827;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  margin-left: 20px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: "Cooper Black", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: .75rem 1.2rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+}
+
+button:hover {
+  background-color: #374151;
+}
+
+button:focus {
+  box-shadow: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.shoeContainer{
+
+  text-align: center;
+ 
+  flex: column;
+
+}
+@media (min-width: 768px) {
+  button-40 {
+    padding: .75rem 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+input[type="text"]:focus {
+  outline: none;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ac1414;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: "Cooper Black", sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+input[type="text"] {
+  outline: none;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ac1414;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: "Cooper Black", sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+.search-results {
+  text-align: center;
+  
+}
+
+.back-to-search {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  
 }

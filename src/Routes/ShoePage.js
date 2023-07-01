@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 function ShoePage() {
   let { id } = useParams();
   const [shoe, setShoe] = useState(null);
+  let navigate = useNavigate();
 
   useEffect(() => {
     Axios.get(`https://the-sneaker-database.p.rapidapi.com/sneakers/${id}`, {
       headers: {
         "X-RapidAPI-Host": "the-sneaker-database.p.rapidapi.com",
-        //"X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
       },
     })
       .then((response) => {
@@ -31,13 +32,32 @@ function ShoePage() {
           {shoe.image && <img src={shoe.image.small} alt="" className="" />}
           <div>
             <div>
-              <h3>Symbol:</h3>
-              <h3>{shoe.name}</h3>
+              <h2>{shoe.name}</h2>
+              <h3>Release Date: {shoe.releaseDate === '' ? 'n/a' : shoe.releaseDate}</h3>
+              <h3>MSRP: {shoe.retailPrice === 0 ? 'n/a' : shoe.retailPrice}</h3>
+
+              <p>
+        Buy now:
+        {Object.entries(shoe.links).map(([key, value]) => {
+          if (value) {
+            return (
+              <a
+                key={key}
+                href={value}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ marginLeft: '5px' }}
+              >
+                {key}
+              </a>
+            );
+          }
+          return null;
+        })}
+      </p>
             </div>
           </div>
-          <Link to="/">
-            <div>Go back</div>
-          </Link>
+          <button onClick={() => {navigate(`/`); }}> Go Home </button>
         </div>
       
 
