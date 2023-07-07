@@ -8,28 +8,27 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     setIsLoading(true);
-    Axios.get("https://the-sneaker-database.p.rapidapi.com/sneakers", {
-      headers: {
-        "X-RapidAPI-Host": "the-sneaker-database.p.rapidapi.com",
-        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY
-      },
-      params: {
-        name: searchTerm,
-        limit: 20,
-      },
-    })
-      .then((response) => {
-        setIsLoading(false);
-        setShoes(response.data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
+    try {
+      const response = await Axios.get("https://the-sneaker-database.p.rapidapi.com/sneakers", {
+        headers: {
+          "X-RapidAPI-Host": "the-sneaker-database.p.rapidapi.com",
+          "X-RapidAPI-Key": process.env.REACT_APP_API_KEY
+        },
+        params: {
+          name: searchTerm,
+          limit: 20,
+        },
       });
+      setShoes(response.data.results);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
-
+  
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
